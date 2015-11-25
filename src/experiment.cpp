@@ -79,13 +79,13 @@ bool Experiment::check_sigma(string line) {
     else if (this->countElements(line) == 2) {
         cout << "Sigma is set to 1.0." << endl << endl;
         boolSigma = false;
-        stream >> this-x[0];
+        stream >> this->x[0];
         stream >> this->y[0];
         this->sigma[0] = 1.0;
     }
     else {
         boolSigma = false;
-        cout << "Your input file must containt three columns, not " << this->countElements(line) << endl << endl;
+        cout << "Your input file must contain three columns, not " << this->countElements(line)  << "." << endl << endl;
         exit(1);
     }
     return boolSigma;
