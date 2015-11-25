@@ -30,8 +30,8 @@ public:
 
     int countElements(string line);
     int get_n(string line);
-    //void set_size(int n);
-    //bool check_sigma(string line);
+    void set_size(int n);
+    bool check_sigma(string line);
     void read_file(string filename);
 
 

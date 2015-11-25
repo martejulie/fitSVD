@@ -6,11 +6,11 @@ Experiment::Experiment(string filename) {
 
 int Experiment::countElements(string line) {
     /*
-    Args:
-        line (string)
-
-    Returns:
-        iElements (int): number of words in line
+     * Args:
+     *  line (string)
+     *
+     * Returns:
+     *  iElements (int): number of words in line
     */
     int iSpaces = 0;
     for (unsigned int i = 0; i < line.length(); i++) {
@@ -23,7 +23,14 @@ int Experiment::countElements(string line) {
 }
 
 int Experiment::get_n(string line) {
-
+    /*
+     * Args:
+     *  line (string)
+     *
+     * Returns:
+     *  0 (int) if 'line' contains more than one element
+     *  this->n = line if 'line' contains one element only
+    */
     stringstream n_stream;
     n_stream << line;
     int elem = 0;
@@ -32,41 +39,51 @@ int Experiment::get_n(string line) {
     }
     if (elem > 1) {
         return 0;
-
     }
     else {
         return this->n;
     }
 }
 
+void Experiment::set_size(int n) {
+    this->x.resize(n);
+    this->y.resize(n);
+    this->sigma.resize(n);
+}
+
+bool check_sigma(string line) {
+    cout << "hello world" << endl;
+    return false
+}
+
 void Experiment::read_file(string filename) {
     /* Read data from file and write it to arrays.
-    Args:
-        filename (string)
-
-    Sets:
-        n (int), x (Col<double>), y (Col<double>), sigma (Col<double>)
+     * Args:
+     *  filename (string)
+     *
+     * Sets:
+     *  n (int)
+     *  x (Col<double>)
+     *  y (Col<double>)
+     *  sigma (Col<double>)
     */
-
     string line;
     ifstream infile;
     infile.open(filename.c_str());
 
     getline(infile, line);
     int N = this->get_n(line);
-
     if (N == 0) {
         cout << "The first line in your input file must contain \n the number of experimental data points, n." << endl;
         exit(1);
     }
 
+    set_size(this->n);
+
+    getline(infile, line);
+    bool boolSigma = check_sigma(line);
 
     /*
-    // set size
-    this->rr.resize(n);
-    this->pp.resize(n);
-    this->ssig.resize(n);
-
     // r, p, sigma
     getline(infile, line);
     stringstream stream;
@@ -109,5 +126,4 @@ void Experiment::read_file(string filename) {
 
 
 
-//void set_size(int n);
-//bool check_sigma(string line);
+
