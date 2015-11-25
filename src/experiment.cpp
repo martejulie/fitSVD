@@ -67,8 +67,9 @@ bool Experiment::check_sigma(string line) {
     */
     bool boolSigma;
     stringstream stream;
-    stream << line;
-    if (this->countElements(line) == 3)
+    stream << line;    
+    int nElements = this->countElements(line);
+    if (nElements == 3)
     {
         cout << "Sigma is read from file." << endl << endl;
         boolSigma = true;
@@ -76,7 +77,7 @@ bool Experiment::check_sigma(string line) {
         stream >> this->y[0];
         stream >> this->sigma[0];
     }
-    else if (this->countElements(line) == 2) {
+    else if (nElements == 2) {
         cout << "Sigma is set to 1.0." << endl << endl;
         boolSigma = false;
         stream >> this->x[0];
@@ -85,7 +86,7 @@ bool Experiment::check_sigma(string line) {
     }
     else {
         boolSigma = false;
-        cout << "Your input file must contain three columns, not " << this->countElements(line)  << "." << endl << endl;
+        cout << "Your input file must contain three columns, not " << nElements  << "." << endl << endl;
         exit(1);
     }
     return boolSigma;
