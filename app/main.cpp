@@ -9,9 +9,6 @@ int main()
     string testfile = "121115_dataSetForTestingPurpose_r_cap_1_rt_150_p_cap_70_M_0_0011_149.dat";
     Experiment my = Experiment(testfile);
     cout << my.countElements("1 2 3") << endl;
-
-    MyClass adder;
-    cout << adder.addition(10, 20) << endl;
     return 0;
 }
 

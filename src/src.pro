@@ -9,10 +9,8 @@ TEMPLATE = lib
 TARGET = myapp
 
 SOURCES += \
-    experiment.cpp \
-    myclass.cpp
+    experiment.cpp
 
 HEADERS += \
-    experiment.h \
-    myclass.h
+    experiment.h
 
