@@ -27,6 +27,9 @@ int Experiment::get_n(string line) {
      * Args:
      *  line (string)
      *
+     * Sets:
+     *  n (int)
+     *
      * Returns:
      *  0 (int) if 'line' contains more than one element
      *  this->n = line if 'line' contains one element only
@@ -52,8 +55,40 @@ void Experiment::set_size(int n) {
 }
 
 bool Experiment::check_sigma(string line) {
-    cout << "hello world" << endl;
-    return false;
+    /*
+     * Args:
+     *  line (string)
+     *
+     * Returns:
+     *  boolSigma (bool): false if 'line' contains two numbers (x, y)
+     *                    true if 'line' contains three numbers (x, y, sigma)
+     *
+     * If 'line' contains > 3 or < 2 numbers, the function writes an error message to terminal
+    */
+    bool boolSigma;
+    stringstream stream;
+    stream << line;
+    if (this->countElements(line) == 3)
+    {
+        cout << "Sigma is read from file." << endl << endl;
+        boolSigma = true;
+        stream >> this->x[0];
+        stream >> this->y[0];
+        stream >> this->sigma[0];
+    }
+    else if (this->countElements(line) == 2) {
+        cout << "Sigma is set to 1.0." << endl << endl;
+        boolSigma = false;
+        stream >> this-x[0];
+        stream >> this->y[0];
+        this->sigma[0] = 1.0;
+    }
+    else {
+        boolSigma = false;
+        cout << "Your input file must containt three columns, not " << this->countElements(line) << endl << endl;
+        exit(1);
+    }
+    return boolSigma;
 }
 
 void Experiment::read_file(string filename) {
@@ -62,7 +97,6 @@ void Experiment::read_file(string filename) {
      *  filename (string)
      *
      * Sets:
-     *  n (int)
      *  x (Col<double>)
      *  y (Col<double>)
      *  sigma (Col<double>)
@@ -84,27 +118,6 @@ void Experiment::read_file(string filename) {
     bool boolSigma = check_sigma(line);
 
     /*
-    // r, p, sigma
-    getline(infile, line);
-    stringstream stream;
-    stream << line;
-    bool sigma;
-    if (this->countElements(line) == 2)
-    {
-        cout << "Sigma is set to 1.0." << endl << endl;
-        sigma = false;
-        stream >> this->rr[0];
-        stream >> this->pp[0];
-        this->ssig[0] = 1.0;
-    }
-    else {
-        cout << "Sigma is read from file." << endl << endl;
-        sigma = true;
-        stream >> this->rr[0];
-        stream >> this->pp[0];
-        stream >> this->ssig[0];
-    }
-
     if (sigma) {
         for (int i = 1; i < this->n; i++) {
             infile >> this->rr[i];
@@ -120,6 +133,7 @@ void Experiment::read_file(string filename) {
         }
     }
     */
+
     infile.close();
 }
 

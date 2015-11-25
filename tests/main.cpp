@@ -9,5 +9,9 @@ TEST_CASE( "MyExperiment", "[myexperiment]" ) {
         REQUIRE(my.countElements("1 2 3") == 3);
         REQUIRE(my.get_n("1") == 1);
         REQUIRE(my.get_n("1 2 3") == 0);
+        REQUIRE(my.check_sigma("1") == false);
+        REQUIRE(my.check_sigma("1 2") == false);
+        REQUIRE(my.check_sigma("1 2 3") == true);
+        REQUIRE(my.check_sigma("1 2 3 4") == false);
     }
 }
