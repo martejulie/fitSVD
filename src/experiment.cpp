@@ -48,7 +48,7 @@ int Experiment::get_n(string line) {
     }
 }
 
-void Experiment::set_size(int n) {
+void Experiment::set_sizes(int n) {
     this->x.resize(n);
     this->y.resize(n);
     this->sigma.resize(n);
@@ -58,6 +58,11 @@ bool Experiment::check_sigma(string line) {
     /*
      * Args:
      *  line (string)
+     *
+     * Sets:
+     *  x[0]
+     *  y[0]
+     *  sigma[0]
      *
      * Returns:
      *  boolSigma (bool): false if 'line' contains two numbers (x, y)
@@ -98,9 +103,9 @@ void Experiment::read_file(string filename) {
      *  filename (string)
      *
      * Sets:
-     *  x (Col<double>)
-     *  y (Col<double>)
-     *  sigma (Col<double>)
+     *  x[1:-1]
+     *  y[1:-1]
+     *  sigma[1:-1]
     */
     string line;
     ifstream infile;
@@ -113,27 +118,24 @@ void Experiment::read_file(string filename) {
         exit(1);
     }
 
-    set_size(this->n);
+    set_sizes(this->n);
 
     getline(infile, line);
     bool boolSigma = check_sigma(line);
-
-    /*
-    if (sigma) {
+    if (boolSigma) {
         for (int i = 1; i < this->n; i++) {
-            infile >> this->rr[i];
-            infile >> this->pp[i];
-            infile >> this->ssig[i];
+            infile >> this->x[i];
+            infile >> this->y[i];
+            infile >> this->sigma[i];
         }
     }
     else {
         for (int i = 1; i < this->n; i++) {
-            infile >> this->rr[i];
-            infile >> this->pp[i];
-            this->ssig[i] = 1.0;
+            infile >> this->x[i];
+            infile >> this->y[i];
+            this->sigma[i] = 1.0;
         }
-    }
-    */
+    }    
 
     infile.close();
 }
