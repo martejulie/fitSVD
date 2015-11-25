@@ -51,9 +51,9 @@ void Experiment::set_size(int n) {
     this->sigma.resize(n);
 }
 
-bool check_sigma(string line) {
+bool Experiment::check_sigma(string line) {
     cout << "hello world" << endl;
-    return false
+    return false;
 }
 
 void Experiment::read_file(string filename) {
