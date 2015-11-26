@@ -52,7 +52,7 @@ private:
      Col<double> b;
 
 
-     //void solve(Col<double> b, Col<double>& x);
+     void solve(Col<double> b, Col<double>& x);
 
      //void calculate_covar_and_chisq();
 };

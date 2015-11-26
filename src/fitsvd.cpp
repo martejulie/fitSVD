@@ -41,18 +41,18 @@ void Fitsvd::fit() {
 
     //thresh = (this->tol > 0.0 ? this->tol*this->S[0] : -1.0);
 
-    //this->solve(b, this->a);            // solve for the coefficients
+    this->solve(b, this->a);            // solve for the coefficients
 
     //this->calculate_covar_and_chisq();
 }
 
 
-//void Fitsvd::solve(Col<double> b, Col<double> &x) {
+void Fitsvd::solve(Col<double> b, Col<double> &x) {
     /* Solve A x = b for a vector x using the pseudoinverse of A as obtained by SVD.
      * If positive, thresh is the threshold value below which singular values are considered as zero.
      * If thresh is negative, a default based on expected roundoff error is used.
      */
-/*    int i, j, jj;
+    int i, j, jj;
     double s;
 
     Col<double> tmp(this->ma);
@@ -72,5 +72,3 @@ void Fitsvd::fit() {
         x[j] = s;
     }
 }
-
-*/
