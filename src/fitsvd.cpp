@@ -18,6 +18,10 @@ void Fitsvd::fit() {
      * a[0..ma-1] of a function that depends linarly on a, y = sum_i(a_i * funcs_i(r).
      * Set answer values for a[0..ma-1], chisq, and the covariance matrix covar[0..ma-1][0..ma-1].
      */
+
+    cout << "hello world" << endl;
+
+    /*
     int i, j;
     double tmp;
     this->ma = funcs((this->x)[0]).size();  // number of basis functions
@@ -33,6 +37,7 @@ void Fitsvd::fit() {
         for (j = 0; j < this->ma; j++) aa(i,j) = afunc[j]*tmp;
         b[i] = this->y[i]*tmp;
     }
+    */
 
     //svd(this->U, this->S, this->V, aa);         // singular value decomposition
 

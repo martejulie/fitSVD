@@ -18,8 +18,8 @@ int main()
 
     cout << "n: " << my.n << endl;
 
-    //Fitsvd mytest = Fitsvd(&myfunc, my.x, my.y, my.sigma); //&myfunc);
-    //mytest.fit();
+    Fitsvd mytest = Fitsvd(&myfunc, my.x, my.y, my.sigma); //&myfunc);
+    mytest.fit();
 
     cout << "Hello World!" << endl;
     return 0;
