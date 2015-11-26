@@ -15,6 +15,9 @@ addons:
     packages:
       - qtdeclarative5-dev
 script:
+  - sudo apt-get install -qq liblapack-dev
+  - sudo apt-get install -qq libblas-dev
+  - sudo apt-get install -qq libboost-dev
   - sudo apt-get install -qq libarmadillo-dev
   - sudo apt-get install catch
   - /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
