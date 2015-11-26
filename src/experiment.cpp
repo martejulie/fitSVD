@@ -11,7 +11,7 @@ int Experiment::countElements(string line) {
      *
      * Returns:
      *  iElements (int): number of words in line
-    */
+     */
     int iSpaces = 0;
     for (unsigned int i = 0; i < line.length(); i++) {
         if (line[i] == ' ') {
@@ -33,7 +33,7 @@ int Experiment::get_n(string line) {
      * Returns:
      *  0 (int) if 'line' contains more than one element
      *  this->n = line if 'line' contains one element only
-    */
+     */
     stringstream n_stream;
     n_stream << line;
     int elem = 0;
@@ -69,7 +69,7 @@ bool Experiment::check_sigma(string line) {
      *                    true if 'line' contains three numbers (x, y, sigma)
      *
      * If 'line' contains > 3 or < 2 numbers, the function writes an error message to terminal
-    */
+     */
     bool boolSigma;
     stringstream stream;
     stream << line;    
@@ -106,7 +106,7 @@ void Experiment::read_file(string filename) {
      *  x[1:-1]
      *  y[1:-1]
      *  sigma[1:-1]
-    */
+     */
     string line;
     ifstream infile;
     infile.open(filename.c_str());

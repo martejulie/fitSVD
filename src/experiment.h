@@ -10,17 +10,18 @@ using namespace std;
 using namespace arma;
 
 class Experiment {
-    // Object for reading experimental data from file
-    // and write them to arrays.
-    // All you need to do is to call the constructor.
-    //
-    // Args:
-    //  filename (string)
-    //
-    // ****
-    // The first line in filename have to contain the number of datapoints.
-    // The rest of the file must be organized in two (three) columns,
-    // representing x, y and (sigma) respectively.
+    /* Object for reading experimental data from file
+     * and write them to arrays.
+     * All you need to do is to call the constructor.
+     *
+     * Args:
+     *  filename (string)
+     *
+     * ****
+     * The first line in filename have to contain the number of datapoints.
+     * The rest of the file must be organized in two (three) columns,
+     * representing x, y and (sigma) respectively.
+     */
 
 public:
     int n;              // number of datapoints

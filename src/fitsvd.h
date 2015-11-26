@@ -16,7 +16,7 @@ class Fitsvd {
     /* Object for general linear leastsquare fitting using singular value decomposition.
      * Call constructor to bind data vectors and fitting functions.
      * Then call fit, which sets the output quantitites a, covar, and chisq.
-    */
+     */
 
 public:
     Col<double> a;              // vector of fitted coefficients
@@ -32,8 +32,8 @@ private:
      int ndat;                   // number of data points
      int ma;                     // number of basis functions
      int dof;                    // degrees of freedom
-     double tol;
-     double tsh, eps;
+     //double tol;
+     //double tsh, eps;
 
      // elementes of the SVD
      mat U;
@@ -50,12 +50,8 @@ private:
      Col<double> b;
 
      void fit();
-     void solve(Col<double> b, Col<double>& x, double thresh);
+     void solve(Col<double> b, Col<double>& x);
      //void calculate_covar_and_chisq();
-
 };
-
-
-//Fitsvd(Col<double> (*funcs)(double)
 
 #endif // FITSVD_H
