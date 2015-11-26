@@ -1,6 +1,7 @@
+#include <iostream>
 #include <experiment.h>
 #include <fitsvd.h>
-#include <iostream>
+#include <standardkroghmodel.h>
 
 using namespace std;
 
@@ -14,11 +15,10 @@ Col<double> myfunc(double x) {
 int main()
 {
     string testfile = "/home/martejulie/master_project_code/fitSVD/121115_dataSetForTestingPurpose_r_cap_1_rt_150_p_cap_70_M_0_0011_149.dat";
-    Experiment my = Experiment(testfile);
+    Experiment myExp = Experiment(testfile);
+    StandardKroghModel myModel = StandardKroghModel(1, 150);
 
-    cout << "n: " << my.n << endl;
-
-    Fitsvd mytest = Fitsvd(&myfunc, my.x, my.y, my.sigma); //&myfunc);
+    Fitsvd myFit = Fitsvd(&myfunc, myExp.x, myExp.y, myExp.sigma); //&myfunc
     mytest.fit();
 
     cout << "Hello World!" << endl;

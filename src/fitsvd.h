@@ -51,7 +51,6 @@ private:
      Mat<double> aa;       // design matrix
      Col<double> b;
 
-
      void solve(Col<double> b, Col<double>& x);
 
      //void calculate_covar_and_chisq();

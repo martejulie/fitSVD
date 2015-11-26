@@ -12,9 +12,11 @@ LIBS += -larmadillo -lblas -llapack
 
 SOURCES += \
     experiment.cpp \
-    fitsvd.cpp
+    fitsvd.cpp \
+    standardkroghmodel.cpp
 
 HEADERS += \
     experiment.h \
-    fitsvd.h
+    fitsvd.h \
+    standardkroghmodel.h
 
