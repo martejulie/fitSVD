@@ -8,7 +8,5 @@ SUBDIRS += \
 app.depends = src
 tests.depends = src
 
-LIBS += -larmadillo -lblas -llapack
-
 OTHER_FILES += \
     defaults.pri
