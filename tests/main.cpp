@@ -14,8 +14,8 @@ TEST_CASE( "MyExperiment", "[myexperiment]" ) {
     }
 }
 
-TEST_CASE( "Random", "[random]" ) {
-    SECTION("trollo") {
-        REQUIRE(2 == 2);
-    }
-}
+//TEST_CASE( "Random", "[random]" ) {
+//    SECTION("trollo") {
+//        REQUIRE(2 == 2);
+//    }
+//}

@@ -5,8 +5,6 @@ SUBDIRS += \
     app \
     tests
 
-LIBS += -larmadillo -lblas -llapack
-
 app.depends = src
 tests.depends = src
 

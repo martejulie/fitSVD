@@ -24,6 +24,8 @@ public:
     double chisq;               // chi square of the fit
     double reduced_chisq;       // chi square divided by the degrees of freedom
 
+    void fit();
+
     Fitsvd();
     Fitsvd(Col<double> (*f)(double), Col<double>, Col<double>, Col<double>);
 
@@ -49,7 +51,7 @@ private:
      Mat<double> aa;       // design matrix
      Col<double> b;
 
-     void fit();
+
      void solve(Col<double> b, Col<double>& x);
      //void calculate_covar_and_chisq();
 };
