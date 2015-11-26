@@ -13,3 +13,9 @@ TEST_CASE( "MyExperiment", "[myexperiment]" ) {
         REQUIRE(my.check_sigma("1 2 3") == true);
     }
 }
+
+TEST_CASE( "Random", "[random]" ) {
+    SECTION("trollo") {
+        REQUIRE(2 == 2);
+    }
+}
