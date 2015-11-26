@@ -9,8 +9,10 @@ TEMPLATE = lib
 TARGET = myapp
 
 SOURCES += \
-    experiment.cpp
+    experiment.cpp \
+    fitsvd.cpp
 
 HEADERS += \
-    experiment.h
+    experiment.h \
+    fitsvd.h
 

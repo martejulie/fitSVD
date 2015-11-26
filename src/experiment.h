@@ -34,7 +34,6 @@ public:
     bool check_sigma(string line);
     void read_file(string filename);
 
-
     Experiment();
     Experiment(string);
 };

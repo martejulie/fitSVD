@@ -1,7 +1,15 @@
 #include <experiment.h>
+#include <fitsvd.h>
 #include <iostream>
 
 using namespace std;
+
+double myfunc(double x) {
+    //Col<double> f(2);
+    //f[0] = 1.0;
+    //f[1] = x;
+    return x;
+}
 
 int main()
 {
@@ -9,6 +17,9 @@ int main()
     Experiment my = Experiment(testfile);
 
     cout << "n: " << my.n << endl;
+
+    //Fitsvd mytest = Fitsvd(myfunc); //&myfunc);
+    //cout << "test: " << mytest.funcs(1) << endl;
 
     cout << "Hello World!" << endl;
     return 0;
