@@ -37,7 +37,7 @@ void Fitsvd::fit() {
     }
 
 
-    //svd(this->U, this->S, this->V, aa);         // singular value decomposition
+    svd(this->U, this->S, this->V, aa);         // singular value decomposition
 
     //thresh = (this->tol > 0.0 ? this->tol*this->S[0] : -1.0);
 

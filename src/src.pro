@@ -8,6 +8,8 @@ TEMPLATE = lib
 
 TARGET = myapp
 
+LIBS += -larmadillo -lblas -llapack
+
 SOURCES += \
     experiment.cpp \
     fitsvd.cpp

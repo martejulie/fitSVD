@@ -8,5 +8,5 @@ TEMPLATE = app
 
 SOURCES += main.cpp
 
-#LIBS += -larmadillo -lblas -llapack
-LIBS += -L../src -lmyapp -larmadillo -lblas -llapack
+LIBS += -larmadillo -lblas -llapack
+LIBS += -L../src -lmyapp
