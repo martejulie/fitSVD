@@ -2,6 +2,7 @@
 #include <experiment.h>
 #include <fitsvd.h>
 #include <standardkroghmodel.h>
+#include <typeinfo>
 
 using namespace std;
 
@@ -23,6 +24,9 @@ int main()
     Fitsvd myFit = Fitsvd(&StandardKroghModel::funcs, myExp.x, myExp.y, myExp.sigma); //&myfunc
     myFit.fit();
     cout << myFit.a << endl;
+
+//    cout << typeid(myFit.a[0]).name() << endl;
+//    cout << typeid(b).name() << endl;
 
     cout << "Hello World!" << endl;
     return 0;
