@@ -21,8 +21,7 @@ TEST_CASE( "MyExperiment", "[myexperiment]" ) {
 
 TEST_CASE( "MyFit", "[myfit]" ) {
     SECTION("parameters") {
-
-        string testfile = "/home/martejulie/master_project_code/fitSVD/271115_dataSetForTestingPurpose_r_t_100_a0_70_a1_0_001_N_33.dat";
+        string testfile = "271115_dataSetForTestingPurpose_r_t_100_a0_70_a1_0_001_N_33.dat";
         Experiment myExp = Experiment(testfile);
         Fitsvd myFit = Fitsvd(&StandardKroghModel::funcs, myExp.x, myExp.y, myExp.sigma); //&myfunc
         myFit.fit();
