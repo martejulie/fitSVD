@@ -25,11 +25,14 @@ TEST_CASE( "MyFit", "[myfit]" ) {
         Experiment myExp = Experiment(testfile);
         Fitsvd myFit = Fitsvd(&StandardKroghModel::funcs, myExp.x, myExp.y, myExp.sigma); //&myfunc
         myFit.fit();
-        double eps = 1e-10;
+        double eps = 1e-12;
         double a0_below = (70.0-eps);
         double a0_above = (70.0+eps);
+        double a1_below = (0.001-eps);
+        double a1_above = (0.001+eps);
         REQUIRE(myFit.a[0] >= a0_below);
         REQUIRE(myFit.a[0] <= a0_above);
-        //REQUIRE(myFit.a[1] == 0.001);
+        REQUIRE(myFit.a[1] >= a1_below);
+        REQUIRE(myFit.a[1] <= a1_above);
     }
 }
