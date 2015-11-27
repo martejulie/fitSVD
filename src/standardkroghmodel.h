@@ -16,14 +16,14 @@ public:
     //double m;           //
     //double p_cap;       //
 
-    Col<double> funcs(double r);
+    static Col<double> funcs(double r);
 
-    StandardKroghModel();
-    StandardKroghModel(double r_cap, double r_t);
+  //  StandardKroghModel();
+  //  StandardKroghModel(double r_cap, double r_t);
 
 private:
-    double r_cap;
-    double r_t;
+    static double r_cap;
+    static double r_t;
 };
 
 #endif // STANDARDKROGHMODEL_H

@@ -1,6 +1,11 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include <experiment.h>
+#include <fitsvd.h>
+#include <standardkroghmodel.h>
+
+double StandardKroghModel::r_cap = 1;
+double StandardKroghModel::r_t = 100;
 
 TEST_CASE( "MyExperiment", "[myexperiment]" ) {
     SECTION("Read Data") {
@@ -14,8 +19,14 @@ TEST_CASE( "MyExperiment", "[myexperiment]" ) {
     }
 }
 
-//TEST_CASE( "Random", "[random]" ) {
-//    SECTION("trollo") {
-//        REQUIRE(2 == 2);
-//    }
-//}
+TEST_CASE( "MyFit", "[myfit]" ) {
+    SECTION("parameters") {
+
+        string testfile = "/home/martejulie/master_project_code/fitSVD/271115_dataSetForTestingPurpose_r_t_100_a0_70_a1_0_001_N_33.dat";
+        Experiment myExp = Experiment(testfile);
+        Fitsvd myFit = Fitsvd(&StandardKroghModel::funcs, myExp.x, myExp.y, myExp.sigma); //&myfunc
+        myFit.fit();
+        REQUIRE(myFit.a[0] == 70.0);
+        REQUIRE(myFit.a[1] == 0.001);
+    }
+}
