@@ -28,6 +28,10 @@ int main()
 //    cout << typeid(myFit.a[0]).name() << endl;
 //    cout << typeid(b).name() << endl;
 
+    //double eps = 1e-4;
+    //cout << (70.0-eps) << endl;
+    //cout << (70.0+eps) << endl;
+
     cout << "Hello World!" << endl;
     return 0;
 }
