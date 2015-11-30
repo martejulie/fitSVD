@@ -26,7 +26,7 @@ double StandardKroghModel::calculate_pcap(double a0, double a1) {
     /*
      *
      */
-    double pval = a0 + a1*r_cap*r_cap - 2*a1*r_t*r_t;
+    double pval = a0 + a1*r_cap*r_cap - 2*a1*r_t*r_t*log(r_cap);
     return pval;
 }
 
