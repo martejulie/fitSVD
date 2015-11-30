@@ -9,8 +9,6 @@ Fitsvd::Fitsvd(Col<double> (*f)(double), Col<double> x, Col<double> y, Col<doubl
     this->y = y;
     this->sigma = sigma;
     this->ndat = y.size();
-    //this->tol = 1.e-12;
-    //this->eps = numeric_limits<double>::epsilon();      // ???
 }
 
 void Fitsvd::fit() {
@@ -19,15 +17,14 @@ void Fitsvd::fit() {
      * Set answer values for a[0..ma-1], chisq, and the covariance matrix covar[0..ma-1][0..ma-1].
      */
 
-
     int i, j;
     double tmp;
-    this->ma = funcs((this->x)[0]).size();  // number of basis functions
+    this->ma = funcs((this->x)[0]).size();       // number of basis functions
     this->dof = this->ndat - this->ma;           // degrees of freedom
-    this->a.resize(this->ma);                    // coefficients
+    this->a.resize(this->ma);                    // model coefficients
     this->aa.resize(this->ndat, this->ma);       // design matrix
     this->b.resize(this->ndat);
-    Col<double> afunc(this->ma);
+    Col<double> afunc(this->ma);                 // basis functions
 
     for (i = 0; i < this->ndat; i++) {           // accumulate coefficients of the design matrix
         afunc = funcs((this->x)[i]);
@@ -36,16 +33,10 @@ void Fitsvd::fit() {
         b[i] = this->y[i]*tmp;
     }
 
-
     svd(this->U, this->S, this->V, aa);         // singular value decomposition
-
-    //thresh = (this->tol > 0.0 ? this->tol*this->S[0] : -1.0);
-
     this->solve(b, this->a);            // solve for the coefficients
-
-    //this->calculate_covar_and_chisq();
+    this->calculate_chisq();
 }
-
 
 void Fitsvd::solve(Col<double> b, Col<double> &x) {
     /* Solve A x = b for a vector x using the pseudoinverse of A as obtained by SVD.
@@ -56,7 +47,6 @@ void Fitsvd::solve(Col<double> b, Col<double> &x) {
     double s;
 
     Col<double> tmp(this->ma);
-    //this->tsh = (thresh >= 0.0 ? thresh : 0.5 * sqrt(this->ndat + this->ma + 1.0) * this->S[0]*eps);
     double tsh = 1.e-12*this->S[0];
     for (j = 0; j < this->ma; j++) {
         s = 0.0;
@@ -71,4 +61,20 @@ void Fitsvd::solve(Col<double> b, Col<double> &x) {
         for (jj = 0; jj < this->ma; jj++) s += this->V(j,jj)*tmp[jj];
         x[j] = s;
     }
+}
+
+void Fitsvd::calculate_chisq() {
+    /* Calculate chi squared and reduced chi squared
+     * chi^2 = |A*a - b|^2
+     * reduced chi^2 = chi^2 / dof
+     */
+    int i, j;
+    double sum;
+    this->chisq = 0.0;
+    for (i = 0; i < this->ndat; i++) {
+        sum = 0.0;
+        for (j = 0; j < this->ma; j++) sum += this->aa(i,j) * this->a[j];
+        this->chisq += (sum - this->b[i])*(sum - this->b[i]);
+    }
+    this->reduced_chisq = this->chisq / this->dof;
 }

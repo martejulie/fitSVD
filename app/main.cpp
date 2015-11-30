@@ -29,6 +29,7 @@ int main()
     StandardKroghModel::set_parameters(myFit.a);
     cout << "p_cap " << StandardKroghModel::p_cap << endl;
     cout << "m: " << StandardKroghModel::m << endl;
+    cout << "chi^2: " << myFit.chisq << endl;
 
     cout << "Hello World!" << endl;
     return 0;

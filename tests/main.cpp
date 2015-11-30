@@ -53,10 +53,21 @@ TEST_CASE( "MyFit", "[myfit]" ) {
         REQUIRE(StandardKroghModel::calculate_pcap(myFit.a[0], myFit.a[1]) <= pcap_above);
         REQUIRE(StandardKroghModel::calculate_m(myFit.a[1]) >= m_below);
         REQUIRE(StandardKroghModel::calculate_m(myFit.a[1]) <= m_above);
-
         REQUIRE(StandardKroghModel::p_cap >= pcap_below);
         REQUIRE(StandardKroghModel::p_cap <= pcap_above);
         REQUIRE(StandardKroghModel::m >= m_below);
         REQUIRE(StandardKroghModel::m <= m_above);
+    }
+
+    SECTION("chisq") {
+        string testfile = "271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
+        Experiment myExp = Experiment(testfile);
+        Fitsvd myFit = Fitsvd(&StandardKroghModel::funcs, myExp.x, myExp.y, myExp.sigma); //&myfunc
+        myFit.fit();
+        double eps = 1e-10;
+        double chisq_below = (0.0-eps);
+        double chisq_above = (0.0+eps);
+        REQUIRE(myFit.chisq >= chisq_below);
+        REQUIRE(myFit.chisq <= chisq_above);
     }
 }

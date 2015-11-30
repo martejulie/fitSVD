@@ -3,9 +3,6 @@
 
 #include <iostream>
 #include <armadillo>
-//#include <nr3.h>
-//#define SQR(x) ((x)*(x))
-//#include <math.h>
 
 using namespace std;
 using namespace arma;
@@ -34,8 +31,6 @@ private:
      int ndat;                   // number of data points
      int ma;                     // number of basis functions
      int dof;                    // degrees of freedom
-     //double tol;
-     //double tsh, eps;
 
      // elementes of the SVD
      mat U;
@@ -53,7 +48,8 @@ private:
 
      void solve(Col<double> b, Col<double>& x);
 
-     //void calculate_covar_and_chisq();
+     void calculate_chisq();
+     //void calculate_covar();
 };
 
 #endif // FITSVD_H
