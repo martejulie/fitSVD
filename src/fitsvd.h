@@ -49,7 +49,7 @@ private:
      void solve(Col<double> b, Col<double>& x);
 
      void calculate_chisq();
-     //void calculate_covar();
+     void calculate_covar();
 };
 
 #endif // FITSVD_H

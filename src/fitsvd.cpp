@@ -36,6 +36,7 @@ void Fitsvd::fit() {
     svd(this->U, this->S, this->V, aa);         // singular value decomposition
     this->solve(b, this->a);            // solve for the coefficients
     this->calculate_chisq();
+    this->calculate_covar();
 }
 
 void Fitsvd::solve(Col<double> b, Col<double> &x) {
@@ -64,7 +65,7 @@ void Fitsvd::solve(Col<double> b, Col<double> &x) {
 }
 
 void Fitsvd::calculate_chisq() {
-    /* Calculate chi squared and reduced chi squared
+    /* Evaluate chi squared and reduced chi squared
      * chi^2 = |A*a - b|^2
      * reduced chi^2 = chi^2 / dof
      */
@@ -77,4 +78,20 @@ void Fitsvd::calculate_chisq() {
         this->chisq += (sum - this->b[i])*(sum - this->b[i]);
     }
     this->reduced_chisq = this->chisq / this->dof;
+}
+
+void Fitsvd::calculate_covar() {
+    // Evaluate the covariance matrix
+    int i, j, k;
+    double sum;
+    this->covar.resize(this->ma, this->ma);
+    double tsh = 1.e-12*this->S[0];
+    for (i = 0; i < this->ma; i++) {
+        for (j = 0; j < i+1; j++) {
+            sum = 0.0;
+            for (k = 0; k < this->ma; k++) if (this->S[k] > tsh)
+                sum += this->V(i,k) * this->V(j,k) / (this->S[k]*this->S[k]);
+            this->covar(j,i) = this->covar(i,j) = sum;
+        }
+    }
 }

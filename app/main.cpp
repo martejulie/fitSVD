@@ -30,6 +30,7 @@ int main()
     cout << "p_cap " << StandardKroghModel::p_cap << endl;
     cout << "m: " << StandardKroghModel::m << endl;
     cout << "chi^2: " << myFit.chisq << endl;
+    cout << myFit.covar << endl;
 
     cout << "Hello World!" << endl;
     return 0;
