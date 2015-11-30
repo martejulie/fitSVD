@@ -45,7 +45,7 @@ TEST_CASE( "MyFit", "[myfit]" ) {
         myFit.fit();
         StandardKroghModel::set_parameters(myFit.a);
         double eps = 1e-10;
-        double a0 = 70.0-0.25*0.004*1.0**2 + 0.5*0.004*100**2;
+        double a0 = 70.0-0.25*0.004 + 0.5*0.004*100*100;
         double a1 = 0.001;
         double a0_below = (a0-eps);
         double a0_above = (a0+eps);
