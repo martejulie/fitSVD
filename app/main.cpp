@@ -6,26 +6,28 @@
 
 using namespace std;
 
-//double StandardKroghModel::p_cap;
-//double StandardKroghModel::m;
+double KroghModel_std2param::p_cap;
+double KroghModel_std2param::m;
 
-// !set variables!
-//double KroghModel_std2param::r_cap = 1;
-//double StandardKroghModel::r_t = 150;
-
-double KroghModel_std3param::r_cap = 1;
 double KroghModel_std3param::r_t;
 double KroghModel_std3param::p_cap;
 double KroghModel_std3param::m;
 
+// !set variables!
+double KroghModel_std2param::r_cap = 1;
+double KroghModel_std2param::r_t = 150;
+
+double KroghModel_std3param::r_cap = 1;
+
 int main()
 {
-    //string filename = "271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
-    //Experiment myExp = Experiment(filename);
-    //Fitsvd myFit = Fitsvd(&KroghModel_std3param::funcs, myExp.x, myExp.y, myExp.sigma);
-    //myFit.fit();
-    //KroghModel_std3param::set_parameters(myFit.a);
-    //cout << "r_t: " << KroghModel_std3param::r_t << endl;
+    string filename = "/home/martejulie/master_project_code/fitSVD/271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
+    Experiment myExp = Experiment(filename);
+    Fitsvd myFit = Fitsvd(&KroghModel_std3param::funcs, myExp.x, myExp.y, myExp.sigma);
+    myFit.fit();
+    KroghModel_std3param::set_parameters(myFit.a);
+    cout << myFit.a << endl;
+    cout << "r_t: " << KroghModel_std3param::r_t << endl;
 
     /*
     ofstream outFile;
