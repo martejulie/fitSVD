@@ -1,6 +1,6 @@
-#include "standardkroghmodel.h"
+#include "kroghmodel_std2param.h"
 
-Col<double> StandardKroghModel::funcs(double r) {
+Col<double> KroghModel_std2param::funcs(double r) {
     // basis functions
     Col<double> f(2);
     f[0] = 1.0;
@@ -8,7 +8,7 @@ Col<double> StandardKroghModel::funcs(double r) {
     return f;
 }
 
-void StandardKroghModel::set_parameters(Col<double> a) {
+void KroghModel_std2param::set_parameters(Col<double> a) {
     /*
      * Args:
      *  a (Col<double>): model coefficients
@@ -22,7 +22,7 @@ void StandardKroghModel::set_parameters(Col<double> a) {
 }
 
 
-double StandardKroghModel::calculate_pcap(double a0, double a1) {
+double KroghModel_std2param::calculate_pcap(double a0, double a1) {
     /*
      * Args:
      *  a0 (double): model coefficient
@@ -35,7 +35,7 @@ double StandardKroghModel::calculate_pcap(double a0, double a1) {
     return pval;
 }
 
-double StandardKroghModel::calculate_m(double a1) {
+double KroghModel_std2param::calculate_m(double a1) {
     /*
      * Args:
      *  a1 (double): model coefficient

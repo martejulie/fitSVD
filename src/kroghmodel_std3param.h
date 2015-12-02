@@ -1,5 +1,5 @@
-#ifndef STANDARDKROGHMODEL_H
-#define STANDARDKROGHMODEL_H
+#ifndef KROGHMODEL_STD3PARAM_H
+#define KROGHMODEL_STD3PARAM_H
 
 #include <iostream>
 #include <armadillo>
@@ -7,7 +7,7 @@
 using namespace std;
 using namespace arma;
 
-class StandardKroghModel {
+class KroghModel_std3param {
     /* Single-Vessel Transport Model
      * Predicts the radial variation in tissue O2 partial pressure (P)
      *
@@ -26,17 +26,19 @@ class StandardKroghModel {
      *
      * We can rewrite the equation as:
      *
-     * P(r) = a0*X0 + a1*X1
+     * P(r) = a0*X0 + a1*X1 + a2*X2
      *
-     * where the coeffisients a0 and a1 are given by
+     * where the coeffisients a0, a1 and a2 are given by
      *
-     * a0 = (p_cap - m*r_cap^2/4 + m*r_t^2*ln(r_cap)/2)
+     * a0 = p_cap - m*r_cap^2/4 + m*r_t^2/2
      * a1 = m/4
+     * a2 = m*r_t^2/2
      *
-     * and the basis functins X0 and X1 are given by
+     * and the basis functions X0, X1 and X2 are given by
      *
      * X0 = 1
-     * X1 = (r^2 - r*r_t^2*ln(r))
+     * X1 = r^2
+     * X2 = ln(r)
      *
      * The parameter m is equal to m0/K.
      */
@@ -44,15 +46,16 @@ class StandardKroghModel {
 public:
     static double m;
     static double p_cap;
+    static double r_t;
 
     static Col<double> funcs(double r);
     static void set_parameters(Col<double> a);
     static double calculate_pcap(double a0, double a1);
     static double calculate_m(double a1);
+    static double calculate_rt(double a1, double a2);
 
 private:
     static double r_cap;
-    static double r_t;
 };
 
-#endif // STANDARDKROGHMODEL_H
+#endif // KROGHMODEL_STD3PARAM_H

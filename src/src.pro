@@ -13,10 +13,12 @@ LIBS += -larmadillo -lblas -llapack
 SOURCES += \
     experiment.cpp \
     fitsvd.cpp \
-    standardkroghmodel.cpp
+    kroghmodel_std2param.cpp \
+    kroghmodel_std3param.cpp
 
 HEADERS += \
     experiment.h \
     fitsvd.h \
-    standardkroghmodel.h
+    kroghmodel_std2param.h \
+    kroghmodel_std3param.h
 
