@@ -16,8 +16,8 @@ double KroghModel_std3param::p_cap;
 double KroghModel_std3param::m;
 
 TEST_CASE( "MyExperiment", "[myexperiment]" ) {
-    SECTION("Read Data") {
-        string testfile = "121115_dataSetForTestingPurpose_r_cap_1_rt_150_p_cap_70_M_0_0011_149.dat";
+    SECTION("Read Data") {        
+        string testfile = "271115_dataSetForTestingPurpose_r_t_100_a0_70_a1_0_001_N_33.dat";
         Experiment my = Experiment(testfile);
         REQUIRE(my.countElements("1 2 3") == 3);
         REQUIRE(my.get_n("1") == 1);
@@ -80,7 +80,7 @@ TEST_CASE( "MyFit2param", "[myfit2param]" ) {
 
 TEST_CASE( "MyFit3param", "[myfit3param]" ) {
     SECTION("parameters: m, p_cap and r_t") {
-        string testfile = "271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
+        string testfile = "031215_dataSetForTestingPurpose_r_cap_1_r_t_100_a0_69_999_a1_0_001_a2_minus20_N_33.dat";
         Experiment myExp = Experiment(testfile);
         Fitsvd myFit = Fitsvd(&KroghModel_std3param::funcs, myExp.x, myExp.y, myExp.sigma);
         myFit.fit();
@@ -107,7 +107,7 @@ TEST_CASE( "MyFit3param", "[myfit3param]" ) {
     }
 
     SECTION("chisq") {
-        string testfile = "271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
+        string testfile = "031215_dataSetForTestingPurpose_r_cap_1_r_t_100_a0_69_999_a1_0_001_a2_minus20_N_33.dat";
         Experiment myExp = Experiment(testfile);
         Fitsvd myFit = Fitsvd(&KroghModel_std3param::funcs, myExp.x, myExp.y, myExp.sigma);
         myFit.fit();

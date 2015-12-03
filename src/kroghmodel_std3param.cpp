@@ -33,7 +33,7 @@ double KroghModel_std3param::calculate_pcap(double a0, double a1) {
      * Returns:
      *  pval (double): p_cap
      */
-    double pval = a0 + a1*r_cap*r_cap - 2.0*a1*r_t*r_t;
+    double pval = a0 + a1*r_cap*r_cap - 2.0*a1*r_t*r_t*log(r_cap);
     return pval;
 }
 
@@ -58,6 +58,6 @@ double KroghModel_std3param::calculate_rt(double a1, double a2) {
      * Return:
      *  rtval (double): r_t
      */
-    double rtval = pow(a2/(2*a1), 0.5);
+    double rtval = pow(-a2/(2*a1), 0.5);
     return rtval;
 }

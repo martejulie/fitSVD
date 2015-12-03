@@ -21,7 +21,7 @@ double KroghModel_std3param::r_cap = 1;
 
 int main()
 {
-    string filename = "/home/martejulie/master_project_code/fitSVD/271115_dataSetForTestingPurpose_r_cap_1_r_t_100_pcap_70_m_0_004_N_33.dat";
+    string filename = "/home/martejulie/master_project_code/fitSVD/031215_dataSetForTestingPurpose_r_cap_1_r_t_100_a0_69_999_a1_0_001_a2_minus20_N_33.dat";
     Experiment myExp = Experiment(filename);
     Fitsvd myFit = Fitsvd(&KroghModel_std3param::funcs, myExp.x, myExp.y, myExp.sigma);
     myFit.fit();
