@@ -1,6 +1,6 @@
 #include "fitsvd.h"
 
-Fitsvd::Fitsvd(Col<double> (*f)(double), Col<double> x, Col<double> y, Col<double> sigma) {
+Fitsvd::Fitsvd(Col<double> (*f)(double), Col<double> x, Col<double> y, Col<double> sigma, double thresh) {
     /* Binds references to the data arrays x, y, and sigma, and to user-supplied function funcs(x)
      * that returns a Col<double> containing ma basis functions evaluated at x = x.
      */
@@ -8,6 +8,7 @@ Fitsvd::Fitsvd(Col<double> (*f)(double), Col<double> x, Col<double> y, Col<doubl
     this->x = x;
     this->y = y;
     this->sigma = sigma;
+    this->thresh = thresh;
     this->ndat = y.size();
 }
 
@@ -48,7 +49,7 @@ void Fitsvd::solve(Col<double> b, Col<double> &x) {
     double s;
 
     Col<double> tmp(this->ma);
-    double tsh = 1.e-12*this->S[0];
+    double tsh = this->thresh*this->S[0];
     for (j = 0; j < this->ma; j++) {
         s = 0.0;
         if (this->S[j] > tsh) {
@@ -85,7 +86,7 @@ void Fitsvd::calculate_covar() {
     int i, j, k;
     double sum;
     this->covar.resize(this->ma, this->ma);
-    double tsh = 1.e-12*this->S[0];
+    double tsh = this->thresh*this->S[0];
     for (i = 0; i < this->ma; i++) {
         for (j = 0; j < i+1; j++) {
             sum = 0.0;

@@ -24,13 +24,14 @@ public:
     void fit();
 
     Fitsvd();
-    Fitsvd(Col<double> (*f)(double), Col<double>, Col<double>, Col<double>);
+    Fitsvd(Col<double> (*f)(double), Col<double>, Col<double>, Col<double>, double);
 
 private:
      myFuncs funcs;
      int ndat;                   // number of data points
      int ma;                     // number of basis functions
      int dof;                    // degrees of freedom
+     double thresh;
 
      // elementes of the SVD
      mat U;
