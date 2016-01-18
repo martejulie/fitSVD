@@ -10,6 +10,7 @@ Fitsvd::Fitsvd(Col<double> (*f)(double), Col<double> x, Col<double> y, Col<doubl
     this->sigma = sigma;
     this->thresh = thresh;
     this->ndat = y.size();
+    this->fit();
 }
 
 void Fitsvd::fit() {
