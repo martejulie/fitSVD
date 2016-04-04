@@ -53,8 +53,6 @@ public:
     static double calculate_pcap(double a0, double a1);
     static double calculate_m(double a1);
     static double calculate_rt(double a1, double a2);
-
-private:
     static double r_cap;
 };
 
