@@ -1,5 +1,6 @@
 # fitSVD
 Modeling of Data by Use of Singular Value Decomposition (SVD)
+
 Details of the code are given in Chapter 4 of
 the Master's degree thesis "Estimation of oxygen consumption from partial pressure
 gradients in cortex", by Marte Julie Sætra, May 2016.
