@@ -22,7 +22,7 @@ return f ;
 }
 ```
 
-The `Experiment` class takes the name of a datafile as argument, which may look at the following
+The `Experiment` class takes the name of a datafile as argument, which may look like the following
 ```
 414
 2.502999 81.091224 1.262092
@@ -30,7 +30,7 @@ The `Experiment` class takes the name of a datafile as argument, which may look 
    ...       ...      ...
 ```
 First line contains the number of data points. The coloumns contains the value of x, y and measurment errors `sigma`,
-respectively. You construct an `Experiment` object in `main.cpp`
+respectively. You construct an `Experiment` object in `main.cpp`.
 
 When you have defined your model, and have a datafile with values of your data points, all you have to do
 to solve the optimization problem is to construct a `Fitsvd` object in `main.cpp`. The constructor of `Fitsvd`
@@ -39,6 +39,8 @@ calls the relevant function, which is named `fit`. The construcor takes the mode
 ``` cpp
 Fitsvd myFit = Fitsvd(&Model::funcs ,myExperiment.x, myExperiment.y ,myExperiment.sigma, thresh);
 ```
+The choice of `thresh` han an influence on the value of chi squared, so one should try out different values and
+choose one that gives a satisfactory evaluation of chi squared.
 
 ## Testing
 [![Build Status](https://travis-ci.org/martejulie/fitSVD.svg)](https://travis-ci.org/martejulie/fitSVD)
