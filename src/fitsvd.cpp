@@ -91,8 +91,11 @@ void Fitsvd::calculate_covar() {
     for (i = 0; i < this->ma; i++) {
         for (j = 0; j < i+1; j++) {
             sum = 0.0;
-            for (k = 0; k < this->ma; k++) if (this->S[k] > tsh)
-                sum += this->V(i,k) * this->V(j,k) / (this->S[k]*this->S[k]);
+            for (k = 0; k < this->ma; k++) {
+                if (this->S[k] > tsh) {
+                    sum += this->V(i,k) * this->V(j,k) / (this->S[k]*this->S[k]);
+                }
+            }
             this->covar(j,i) = this->covar(i,j) = sum;
         }
     }
