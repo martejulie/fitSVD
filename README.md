@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/martejulie/fitSVD.svg)](https://travis-ci.org/martejulie/fitSVD)
+
 # fitSVD
 Modeling of Data by Use of Singular Value Decomposition (SVD)
 
@@ -42,7 +44,4 @@ Fitsvd myFit = Fitsvd(&Model::funcs ,myExperiment.x, myExperiment.y ,myExperimen
 ```
 The choice of `thresh` has an influence on the value of chi squared, so one should try out different values and
 choose one that gives a satisfactory evaluation of chi squared. `thresh` set to e-12 can be a startin point.
-
-## Testing
-[![Build Status](https://travis-ci.org/martejulie/fitSVD.svg)](https://travis-ci.org/martejulie/fitSVD)
 
