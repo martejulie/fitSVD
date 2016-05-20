@@ -4,8 +4,9 @@
 Modeling of Data by Use of Singular Value Decomposition (SVD)
 
 Details of the code are given in Chapter 4 of
-the Master's degree thesis "Estimation of oxygen consumption from partial pressure
-gradients in cortex", by Marte Julie Sætra, May 2016.
+the Master's degree thesis 
+["Estimation of oxygen consumption from partial pressure gradients in cortex"](https://github.com/martejulie/master-thesis), 
+by Marte Julie Sætra, May 2016.
 
 ## Code Example
 You are given a set of experimental data points and want to study it by fitting it to a model of choice.
